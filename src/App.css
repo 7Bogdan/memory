@@ -57,3 +57,35 @@ li {
   border-radius: 5px;
   background: grey;
 }
+
+.front-square:hover {
+  border: 3px solid green;
+}
+
+.winner {
+  text-align: center;
+  font-size: 25px;
+}
+
+.game-refresh {
+<<<<<<< HEAD
+  margin: 10px;
+=======
+>>>>>>> 57262f353ec8386c3e69c96da40bc8dd03ee4fe2
+  font-size: 15px;
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  color: #00ffe7;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border-color: none;
+  box-shadow: 0 0 40px 40px #a61b1b inset, 0 0 0 0 #808080 ;
+  transition: 150ms ease-in-out;
+}
+.game-refresh:hover{
+  box-shadow: 0 0 10px 0 green  inset, 0 0 10px 4px green ;
+    color: green ;
+}

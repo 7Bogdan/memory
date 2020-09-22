@@ -1,26 +1,46 @@
 import React from "react";
-import infoColors from "../infoGame/infoForBoard.js";
 
 const Info = (props) => {
-  let colors = infoColors;
+  let propsColors = props.colors;
 
   let infoColor = () => {
     let arr = [];
-    colors.map((color) => arr.push(color.color));
+    propsColors.map((color) =>
+      color.found === false ? arr.push(color.color) : null
+    );
     return Array.from(new Set(arr));
   };
 
-  let color = infoColor();
+  let colorsInfo = infoColor();
 
-  let listColors = () => {
+  let restOfColor = () => {
     return (
       <ol>
-        {" "}
-        {color.map((color, index) => (
-          <li key={index} className="mark" style={color} />
+        {colorsInfo.map((color, index) => (
+          <li key={index} className="needColor" style={color} />
         ))}
       </ol>
     );
+  };
+
+  let endGame = () => {
+    return (
+      <div className="winner">
+        You won !<br />
+        Will we play again? <br />
+        <button className="game-refresh" onClick={props.refresh}>
+          Refresh
+        </button>
+      </div>
+    );
+  };
+
+  let listColors = () => {
+    if (colorsInfo.length === 0) {
+      return endGame();
+    } else {
+      return restOfColor();
+    }
   };
 
   return (

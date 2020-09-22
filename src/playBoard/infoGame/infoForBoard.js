@@ -1,6 +1,6 @@
-let infoSquares = [];
-let interimArr = [];
-export let infoColors = [];
+let infoSquares = ()=> {
+let infoSquare = []
+let interimArr = []
 
 for (let i = 0; i < 8; i++) {
   let color = RandomColor();
@@ -13,8 +13,8 @@ for (let i = 0; i < 16; i++) {
   let color = interimArr[i].color;
   let index = i;
   let flipped = false;
-  infoColors.push({color});
-  infoSquares.push({color, id, index, flipped});
+  let found = false;
+  infoSquare.push({color, id, index, flipped,found});
 }
 
 function RandomColor() {
@@ -29,5 +29,7 @@ function shuffle(arr) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
 }
-shuffle(infoSquares);
+shuffle(infoSquare)
+return infoSquare ;
+}
 export default infoSquares;

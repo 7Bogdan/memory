@@ -29,8 +29,7 @@ function Board() {
   };
 
   let rememberSquare = (index, id) => {
-    let square =
-      firstSquare === "firstSquare"
+        firstSquare === "firstSquare"
         ? setFirstSquare({ index, id })
         : setSecondSquare({ index, id });
   };
@@ -38,13 +37,14 @@ function Board() {
   useEffect(() => {
     if (steps % 2 === 0) {
       setClick(false);
-      setTimeout(restart, 1500);
+      setTimeout(compareColor, 1000);
     }
   }, [steps]);
 
-  let restart = () => {
+  let compareColor = () => {
     if (firstSquare.id === secondSquare.id) {
       setClick(true);
+      foundColor(firstSquare.id)
       setFirstSquare("firstSquare");
       setSecondSquare("secondSquare");
     } else {
@@ -56,6 +56,18 @@ function Board() {
     }
   };
 
+  let foundColor = (id) => {
+    let interimArr = infoForSquares;
+    interimArr.map((square) =>
+      square.id === id ? (square.found = !square.found) : null
+    );
+    setInfoForSquares(interimArr);
+  };
+
+  let refresh = () => {
+    setInfoForSquares(infoSquares());
+    setSteps(0);
+  }
   return (
     <div className="game">
       <div className="memory-game">
@@ -71,7 +83,7 @@ function Board() {
           />
         ))}
       </div>
-      <Info steps={steps} />
+      <Info refresh={refresh} colors = {infoForSquares} steps={steps} />
     </div>
   );
 }
