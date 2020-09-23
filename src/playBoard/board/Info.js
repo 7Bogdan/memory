@@ -16,6 +16,8 @@ const Info = (props) => {
   let restOfColor = () => {
     return (
       <ol>
+        <li className="info">Steps done: {props.steps} </li>
+        <li className="info">You need to find colors </li>
         {colorsInfo.map((color, index) => (
           <li key={index} className="needColor" style={color} />
         ))}
@@ -26,8 +28,8 @@ const Info = (props) => {
   let endGame = () => {
     return (
       <div className="winner">
-        You won !<br />
-        Will we play again? <br />
+        You won in {props.steps} steps. <br />
+        Will you play again? <br />
         <button className="game-refresh" onClick={props.refresh}>
           Refresh
         </button>
@@ -45,7 +47,6 @@ const Info = (props) => {
 
   return (
     <div className="game-info">
-      <div className="game-stape">Stape: {props.steps} </div>
       {listColors()}
     </div>
   );
